@@ -1,6 +1,7 @@
 #!/bin/bash
-sudo systemctl stop httpd
-sudo systemctl disable httpd
+sudo systemctl stop apache2
+sudo systemctl disable apache2
+
 
 	
  
