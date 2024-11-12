@@ -3,18 +3,21 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing NGINX
-      - sudo apt update -y
-      - sudo apt install nginx -y
+      - echo Installing httpd
+      - sudo yum update -y
+      - sudo yum install httpd -y
+      - sudo systemctl start httpd
   build:
     commands:
       - echo Build started on $(date)
   post_build:
     commands:
-      - echo Configuring NGINX
+      - echo Configuring httpd
 
 artifacts:
   files:
     - '**/*'
+
+
 
 
