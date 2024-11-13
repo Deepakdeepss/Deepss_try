@@ -3,21 +3,20 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing Apache HTTP server...
+      - echo Installing dependencies...
       - yum update -y
       - yum install -y httpd
   build:
     commands:
-      - echo Building and copying files...
+      - echo Copying files...
       - cp app/index.html /var/www/html/
       - cp app/style.css /var/www/html/
-      - cp -r images/ /var/www/html/images/
-      - systemctl start httpd
+      - cp -r images/ /var/www/html/images/  # Make sure images are copied to the correct directory
   post_build:
     commands:
-      - echo Deployment successful!
-
+      - echo Build and copy complete.
 artifacts:
   files:
-    - '**/*'
+    - '**/*'  # Make sure this includes the images folder and other necessary files
+
 

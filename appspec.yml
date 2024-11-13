@@ -5,17 +5,18 @@ files:
     destination: /var/www/html/
   - source: /app/style.css
     destination: /var/www/html/
-  - source: /images/*
+  - source: /images/*  # Make sure the source is correct and includes the images folder
     destination: /var/www/html/images/
+
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies.sh
       timeout: 300
-      runas: root  # You may specify the user running this
+      runas: root
   ApplicationStart:
     - location: scripts/start_server.sh
       timeout: 300
-      runas: root  # If needed, specify user here
+      runas: root
   ApplicationStop:
     - location: scripts/stop_server.sh
       timeout: 300
