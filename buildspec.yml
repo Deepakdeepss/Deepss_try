@@ -3,21 +3,21 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing httpd
-      - sudo yum update -y
-      - sudo yum install -y httpd
+      - echo Installing Apache HTTP server...
+      - yum update -y
+      - yum install -y httpd
   build:
     commands:
-      - echo Build started on $(date)
-      - sudo httpd -k start  # Start httpd in the foreground, as systemctl won't work
+      - echo Building and copying files...
+      - cp app/index.html /var/www/html/
+      - cp app/style.css /var/www/html/
+      - cp -r images/ /var/www/html/images/
+      - systemctl start httpd
   post_build:
     commands:
-      - echo Configuring httpd
+      - echo Deployment successful!
 
 artifacts:
   files:
     - '**/*'
-
-
-
 
